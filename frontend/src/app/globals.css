@@ -1,0 +1,170 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { color-scheme: dark; }
+  html.dark { color-scheme: dark; }
+
+  body {
+    @apply bg-cream-100 text-slate-800 antialiased transition-colors duration-300;
+  }
+  .dark body {
+    @apply bg-midnight-950 text-midnight-50;
+  }
+}
+
+/* ── Markdown response ────────────────────────────────────────────── */
+.markdown-body {
+  @apply text-sm leading-[1.75];
+  color: #374151; /* slate-700 */
+}
+.dark .markdown-body {
+  color: #ddddf0;
+}
+
+/* paragraphs */
+.markdown-body p          { @apply my-2; }
+.markdown-body p:first-child { @apply mt-0; }
+.markdown-body p:last-child  { @apply mb-0; }
+
+/* headings */
+.markdown-body h1 {
+  @apply text-base font-bold mt-4 mb-2 pb-1;
+  border-bottom: 1px solid #e5e0d6;
+  color: #111827;
+}
+.dark .markdown-body h1 {
+  border-color: #1a1a32;
+  color: #f0f0ff;
+}
+.markdown-body h2 {
+  @apply text-sm font-bold mt-4 mb-2 pb-1;
+  border-bottom: 1px solid #ede9e0;
+  color: #1f2937;
+}
+.dark .markdown-body h2 {
+  border-color: #16162a;
+  color: #e8e8f8;
+}
+.markdown-body h3 {
+  @apply text-sm font-semibold mt-3 mb-1;
+  color: #4f46e5;
+}
+.dark .markdown-body h3 {
+  color: #a5b4fc;
+}
+.markdown-body :is(h1,h2,h3):first-child { @apply mt-0; }
+
+/* lists */
+.markdown-body ul,
+.markdown-body ol { @apply pl-0 my-2 space-y-1.5 list-none; }
+.markdown-body ol { counter-reset: item; }
+.markdown-body ol > li { counter-increment: item; }
+
+.markdown-body ul > li,
+.markdown-body ol > li { @apply flex gap-2; }
+
+.markdown-body ul > li::before {
+  content: "▸";
+  @apply shrink-0 mt-[2px];
+  color: #6366f1;
+}
+.dark .markdown-body ul > li::before { color: #818cf8; }
+
+.markdown-body ol > li::before {
+  content: counter(item) ".";
+  @apply font-semibold shrink-0 min-w-[1.4em] mt-[2px];
+  color: #6366f1;
+}
+.dark .markdown-body ol > li::before { color: #818cf8; }
+
+.markdown-body li ul,
+.markdown-body li ol { @apply mt-1.5 ml-4; }
+
+/* inline formatting */
+.markdown-body strong { @apply font-semibold; color: #111827; }
+.dark .markdown-body strong { color: #f5f5ff; }
+.markdown-body em { @apply italic; color: #6b7280; }
+.dark .markdown-body em { color: #a0a0c0; }
+
+/* inline code */
+.markdown-body :not(pre) > code {
+  @apply font-mono text-[0.8em] px-1.5 py-0.5 rounded;
+  background: #ede9ff;
+  color: #4338ca;
+  border: 1px solid #c7d2fe;
+}
+.dark .markdown-body :not(pre) > code {
+  background: #1e1640;
+  color: #a5b4fc;
+  border-color: #312e81;
+}
+
+/* code blocks */
+.markdown-body pre {
+  @apply rounded-xl p-4 my-3 overflow-x-auto text-[0.82em] font-mono;
+  background: #f5f3ee;
+  border: 1px solid #e0dbd0;
+}
+.dark .markdown-body pre {
+  background: #06060f;
+  border-color: #1a1a2e;
+}
+.markdown-body pre code {
+  @apply bg-transparent border-0 px-0 py-0;
+  color: #374151;
+}
+.dark .markdown-body pre code { color: #c0c0e0; }
+
+/* blockquote */
+.markdown-body blockquote {
+  @apply pl-3 my-3 italic rounded-r-lg py-2 pr-3;
+  border-left: 2px solid #6366f1;
+  background: #eef2ff;
+  color: #6b7280;
+}
+.dark .markdown-body blockquote {
+  background: #0e0c1e;
+  color: #7070a0;
+}
+.markdown-body blockquote p { @apply my-0; }
+
+/* hr */
+.markdown-body hr { @apply my-4; border-color: #e0dbd0; }
+.dark .markdown-body hr { border-color: #1a1a32; }
+
+/* links */
+.markdown-body a {
+  @apply underline underline-offset-2 transition-colors;
+  color: #4f46e5;
+}
+.markdown-body a:hover { color: #4338ca; }
+.dark .markdown-body a { color: #818cf8; }
+.dark .markdown-body a:hover { color: #a5b4fc; }
+
+/* tables */
+.markdown-body table { @apply w-full text-xs my-3 border-collapse; }
+.markdown-body th {
+  @apply text-left px-3 py-2 font-semibold;
+  background: #f5f2ec;
+  border-bottom: 1px solid #d6d0c4;
+  color: #374151;
+}
+.dark .markdown-body th {
+  background: #0a0a18;
+  border-color: #1e1e32;
+  color: #c0c0e0;
+}
+.markdown-body td {
+  @apply px-3 py-2;
+  border-bottom: 1px solid #ede9e0;
+  color: #4b5563;
+}
+.dark .markdown-body td {
+  border-color: #14142a;
+  color: #a0a0c0;
+}
+.markdown-body tr:last-child td { @apply border-b-0; }
+.markdown-body tbody tr:nth-child(even) td { background: #faf8f4; }
+.dark .markdown-body tbody tr:nth-child(even) td { background: #0c0c1a; }
