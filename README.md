@@ -76,4 +76,3 @@ The app is now at **http://localhost:3000**.
 - Embeddings and FAISS indexes are cached in `backend/vectorstore/` — re-uploading the same file skips re-embedding.
 - The LLM is instructed to answer only from the document; it will say so if the answer isn't there.
 - To switch models, edit `llm = ChatOpenAI(model=...)` in `backend/rag.py`.
-# pdf-reader-ai
